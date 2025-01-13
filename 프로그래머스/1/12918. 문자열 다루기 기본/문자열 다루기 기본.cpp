@@ -8,7 +8,7 @@ bool solution(string s) {
     if(s.size() != 4 && s.size() != 6)
         return false;
     for(char t : s){
-        if(!isdigit(t))
+        if((int)t <= 47 || (int)t >= 59)
             return false;
     }
     return answer;
