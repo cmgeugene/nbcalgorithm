@@ -1,0 +1,16 @@
+#include <string>
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+long long solution(int k, int d) {
+    long long answer = 0;
+    for(long long x = 0; x <= d; x += k)
+    {
+        long long max_y = sqrt((long long)d * d - x * x);
+        long long count_y = (max_y / k) + 1;
+        answer += count_y;
+    }
+    return answer;
+}
