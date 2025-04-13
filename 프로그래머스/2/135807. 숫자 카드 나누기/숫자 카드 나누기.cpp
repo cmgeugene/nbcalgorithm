@@ -1,8 +1,25 @@
 #include <string>
 #include <vector>
 #include <numeric>
+#include <algorithm>
 
 using namespace std;
+
+vector<int> getDivisors(int g)
+{
+    vector<int> result;
+    
+    for(int i = 1; i*i <= g; i++)
+    {
+        if(g % i == 0) 
+        {
+            result.push_back(i);
+            if(i != g / i) result.push_back(g/i);
+        }
+    }
+    sort(result.rbegin(), result.rend());
+    return result;
+}
 
 bool IsValid(int x, vector<int>& array)
 {
@@ -30,8 +47,25 @@ int solution(vector<int> arrayA, vector<int> arrayB) {
         gb = gcd(gb, b);
     }
     
-    if(IsValid(ga,arrayB)) answer = max(answer, ga);
-    if(IsValid(gb,arrayA)) answer = max(answer, gb);
+    vector<int> adivisors = getDivisors(ga);
+    vector<int> bdivisors = getDivisors(gb);
+    
+    for(auto& cd : adivisors)
+    {
+        if(IsValid(cd, arrayB)) 
+        {
+            answer = max(cd, answer);
+            break;
+        }
+    }
+    for(auto& cd : bdivisors)
+    {
+        if(IsValid(cd, arrayA))
+        {
+            answer = max(cd,answer); 
+            break;
+        }
+    }
     
     return answer;
 }
