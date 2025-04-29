@@ -7,7 +7,6 @@ using namespace std;
 int solution(string name) {
     int answer = 0;
     // A:65 Z:90 까지 M이면 내림 N이면 올림이 빠름
-    
     // 총 문자 변경 횟수
     int letterchange = 0;
     for(char t : name)
