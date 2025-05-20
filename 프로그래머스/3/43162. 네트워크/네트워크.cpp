@@ -17,7 +17,6 @@ void dfs(int node, vector<vector<int>>& computers, vector<bool>& visited)
             dfs(i,computers,visited);
         }
     }
-
 }
 int solution(int n, vector<vector<int>> computers) {
     int answer = 0;
